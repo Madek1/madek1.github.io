@@ -3,28 +3,28 @@ body {
     padding: 0;
 }
 
-.header {
+#header {
     background:  #3A7AD9;
     text-align: center;
     height: 50px;
     width: 100%;
 }
 
-.sidebar {
+#sidebar {
     background:  #5D93E2;
     height: 400px;
     width: 30%;
     float: left;
 }
 
-.container {
+#container {
     background:  #88B0EC;
     height: 400px;
     width: 70%;
     float: left;
 }
 
-.footer {
+#footer {
     background:  #3A7AD9;
     text-align: right;
     width: 100%;
