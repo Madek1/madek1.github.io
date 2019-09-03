@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background:  #0B873D;
+    color: white;
+    font-size: 150%;
+    text-align: center;
+    width: 100%;
+}
+
+#left {
+    background:  #8CE1AE;
+    height: 600px;
+    width: 40%;
+    float: left;
+}
+
+#center {
+    background: #5CCB89;
+    height: 600px;
+    width: 40%;
+    float: left;
+}
+
+#right {
+    background:  #1DA956;
+    height: 600px;
+    width: 20%;
+    float: left;
+}
+
+a {
+    color: red;
+}
+
+a:visited {
+    color: brown;
+}
+
+ul {
+    margin: 20px;
+    list-style-image: url('./auto.png');
+}
