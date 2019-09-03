@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background:  #3A7AD9;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+}
+
+.sidebar {
+    background:  #5D93E2;
+    height: 400px;
+    width: 30%;
+    float: left;
+}
+
+.container {
+    background:  #88B0EC;
+    height: 400px;
+    width: 70%;
+    float: left;
+}
+
+.footer {
+    background:  #3A7AD9;
+    text-align: right;
+    width: 100%;
+    clear: both
+}
