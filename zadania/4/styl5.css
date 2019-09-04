@@ -28,7 +28,7 @@ body {
     height: 600px;
 }
 
-#right, #left {
+.col {
     background: #669999;
     width: 30%;
 }
