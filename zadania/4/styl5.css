@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header, #container__contact {
+    background: #009999;
+    color: white;
+    text-align: center;
+}
+
+#header {
+    height: 80px;
+}
+
+#container__contact {
+    font-family: Arial;
+    height: 150px;
+    display: flex;
+}
+
+.row__info {
+    width: 25%;
+}
+
+#container__main {
+    display: flex;
+    height: 600px;
+}
+
+#right, #left {
+    background: #669999;
+    width: 30%;
+}
+
+#center {
+    background: #99CCCC;
+    width: 40%;
+    text-align: center
+}
+
+#footer {
+    background: #009999;
+    color: white;
+    text-align: right;
+}
+
+table {
+    border: 1px solid green;
+    text-align: center
+}
+
+table tr th, table tr td {
+    border: 1px solid green;
+}
+
+input[type=submit] {
+    border: 0;
+    margin: 10px;
+    background: green;
+    color: white;
+}
