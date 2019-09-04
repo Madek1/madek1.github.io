@@ -49,3 +49,7 @@ table tr th, table tr td {
 img {
     padding: 30px;
 }
+
+ol {
+    list-style-type: upper-roman;
+}
