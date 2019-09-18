@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Czy rok jest przetępny?</h1>
+    <form>
+        <label for="rok">Rok:    
+            <input type="number" name="rok" id="rok" placeholder="Wpisz rok">
+        </label>
+        <input type="button" value="Oblicz" onclick="oblicz()">
+    </form>
+    <div id="wynik"></div>
+    <script>
+        const oblicz = () => {
+            if (rok.value === '') {
+                rok.style.border = '1px solid red'
+                alert('Pole rok nie może być puste')
+            } else {
+                rok.style.border = '1px solid black'
+                const r = ~~rok.value
+                wynik.textContent = (r % 4 === 0 && r % 100 !== 0) || r % 400 === 0 
+                    ? `Rok ${r} jest przestępny`
+                    : `Rok ${r} jest normalny`
+            }
+        }
+    </script>
+</body>
+</html>
