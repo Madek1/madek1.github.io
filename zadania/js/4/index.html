@@ -15,7 +15,7 @@
     </label>
     <input type="submit" name="submit" value="Oblicz" onclick="calc()">
     <br>
-    Nagroda: <div id="result"></div>
+    <div id="result"></div>
     <script type="text/javascript">
       const calc = () => {
         if (p.value === '' || p.value === '') {
@@ -34,7 +34,7 @@
             else res = (2 * _q) + _p
           } else res = Math.min(_p, _q) + 4
         }
-        result.textContent = res
+        result.textContent = 'Nagroda: ' + res
       }
     </script>
   </body>
