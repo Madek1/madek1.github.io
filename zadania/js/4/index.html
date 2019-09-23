@@ -5,34 +5,38 @@
     <title>Prawdopodobieństwo wygranej</title>
   </head>
   <body>
-    <label for="p">
-      p:
-      <input type="number" name="p" id="p">
-    </label>
-    <label for="q">
-      q:
-      <input type="number" name="q" id="q">
-    </label>
-    <input type="submit" name="submit" value="Oblicz" onclick="calc()">
+    <input type="submit" name="submit" value="Losuj" onclick="rand()">
+    <br>
+    <div id="kostki"></div>
     <br>
     <div id="result"></div>
     <script type="text/javascript">
-      const calc = () => {
-        if (p.value === '' || p.value === '') {
-          result.textContent = 'Nie podano wszystkich wartości!'
-          throw new Error('Nie podano wszystkich wartości!')
-        }
-        const _p = ~~p.value
-        const _q = ~~q.value
+      const rand = () => {
+        const p = Math.floor(Math.random() * 6 + 1)
+        const q = Math.floor(Math.random() * 6 + 1)
+        while (kostki.firstChild) kostki.removeChild(kostki.firstChild)
+        createImage(p)
+        createImage(q)
+        calc(p, q)
+      }
+
+      const createImage = (i) => {
+        const img = document.createElement('img')
+        img.style.width = '100px'
+        img.src = `./kostki/g${i}.png`
+        kostki.appendChild(img)
+      }
+
+      const calc = (p, q) => {
         let res
-        if (_p % 2 === 0) {
-          if (_q === 2 || _q === 4 || _q === 5) res = _p + (3 * _q)
-          else res = 2 * _q
+        if (p % 2 === 0) {
+          if (q === 2 || q === 4 || q === 5) res = p + (3 * q)
+          else res = 2 * q
         } else {
-          if (_q === 1 || _q === 3 || _q === 6) {
-            if (_p === _q) res = 5 * _p + 3
-            else res = (2 * _q) + _p
-          } else res = Math.min(_p, _q) + 4
+          if (q === 1 || q === 3 || q === 6) {
+            if (p === q) res = 5 * p + 3
+            else res = (2 * q) + p
+          } else res = Math.min(p, q) + 4
         }
         result.textContent = 'Nagroda: ' + res
       }
