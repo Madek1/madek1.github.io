@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Równanie kwadratowe</title>
+  </head>
+  <body>
+    <h1>Równanie kwadratowe</h1>
+    <p>ax<sup>2</sup>+bx+c=0</p>
+    <label for="a">a=
+      <input type="number" name="a" id="a">
+    </label>
+    <br>
+    <label for=b">b=
+      <input type="number" name="b" id="b">
+    </label>
+    <br>
+    <label for="c">c=
+      <input type="number" name="c" id="c">
+    </label>
+    <br>
+    <input type="submit" name="submit" value="Oblicz" onclick="calc()">
+    <br>
+    <div id="result"></div>
+    <script type="text/javascript">
+      const calc = () => {
+        const delta = b.value ** 2 - (4 * a.value * c.value)
+        let res
+        if (delta > 0) {
+          const x1 =  (-1 * b.value - Math.sqrt(delta)) / 2 * a.value
+          const x2 =  (-1 * b.value + Math.sqrt(delta)) / 2 * a.value
+          res = 'Równanie ma dwa pierwiastki x<sub>1</sub>=' + x1.toFixed(2) + ' lub x<sub>2</sub>=' + x2.toFixed(2)
+        } else if (delta === 0) {
+          const x0 = -1 * b.value / 2 * a.value
+          res = 'Równanie ma jeden pierwiastek x=' + x0.toFixed(2)
+        } else res = 'Równanie nie ma pierwiastków'
+        result.innerHTML = res
+      }
+    </script>
+  </body>
+</html>
