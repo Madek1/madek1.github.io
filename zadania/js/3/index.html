@@ -11,7 +11,7 @@
       <input type="number" name="a" id="a">
     </label>
     <br>
-    <label for=b">b=
+    <label for="b">b=
       <input type="number" name="b" id="b">
     </label>
     <br>
@@ -24,6 +24,13 @@
     <div id="result"></div>
     <script type="text/javascript">
       const calc = () => {
+        if (a.value === '' || b.value === '' || c.value === '') {
+          result.textContent = 'Nie podano wszystkich wartości!'
+          throw new Error('Nie podano wszystkich wartości!')
+        } else if (~~a.value === 0) {
+          result.textContent = 'Nie jest to równanie kwadratowe!'
+          throw new Error('Nie jest to równanie kwadratowe!')
+        }
         const delta = b.value ** 2 - (4 * a.value * c.value)
         let res
         if (delta > 0) {

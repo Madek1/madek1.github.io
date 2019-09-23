@@ -18,6 +18,10 @@
     Nagroda: <div id="result"></div>
     <script type="text/javascript">
       const calc = () => {
+        if (p.value === '' || p.value === '') {
+          result.textContent = 'Nie podano wszystkich wartości!'
+          throw new Error('Nie podano wszystkich wartości!')
+        }
         const _p = ~~p.value
         const _q = ~~q.value
         let res
