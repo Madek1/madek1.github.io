@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Konwertowanie liczb</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <label for="input">Podaj:
+      <input type="number" name="input" id="input">
+    </label>
+    <select class="" name="option" id="option">
+      <option value="km">Kilometry na mile</option>
+      <option value="mk">Mile na kilometry</option>
+      <option value="ceca">Centymetry na cale</option>
+      <option value="cace">Cale na centymetry</option>
+      <option value="sm">Stopy na metry</option>
+      <option value="ms">Metry na stopy</option>
+      <option value="lg">Litry na galony</option>
+      <option value="gl">Galony na litry</option>
+      <option value="fk">Funty na kilogramy</option>
+      <option value="kf">Kilogramy na funty</option>
+    </select>
+    <input type="submit" name="submit" value="Przelicz" onclick="calc()">
+    <p>
+      <label for="result">Wynik:
+        <input type="number" name="result" id="result">
+      </label>
+    </p>
+    <script type="text/javascript">
+      const calc = () => {
+        let res
+        switch(option.value) {
+          case 'km':
+            res = ~~input.value * 0.621371192
+            break;
+          case 'mk':
+            res = ~~input.value * 1.609344
+            break;
+          case 'ceca':
+            res = ~~input.value * 0.393700787
+            break;
+          case 'cace':
+            res = ~~input.value * 2.54
+            break;
+          case 'sm':
+            res = ~~input.value * 0.762
+            break;
+          case 'ms':
+            res = ~~input.value * 1.312335958
+            break;
+          case 'lg':
+            res = ~~input.value * 0.264172052
+            break;
+          case 'gl':
+            res = ~~input.value * 3.78541178
+            break;
+          case 'fk':
+            res = ~~input.value * 0.45359237
+            break;
+          case 'kf':
+            res = ~~input.value * 2.20462262
+            break;
+        }
+        result.value = res.toFixed(2)
+      }
+    </script>
+  </body>
+</html>

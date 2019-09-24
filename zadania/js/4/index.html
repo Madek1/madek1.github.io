@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Prawdopodobieństwo wygranej</title>
+  </head>
+  <body>
+    <label for="p">
+      p:
+      <input type="number" name="p" id="p">
+    </label>
+    <label for="q">
+      q:
+      <input type="number" name="q" id="q">
+    </label>
+    <input type="submit" name="submit" value="Oblicz" onclick="calc()">
+    <br>
+    Nagroda: <div id="result"></div>
+    <script type="text/javascript">
+      const calc = () => {
+        const _p = ~~p.value
+        const _q = ~~q.value
+        let res
+        if (_p % 2 === 0) {
+          if (_q === 2 || _q === 4 || _q === 5) res = _p + (3 * _q)
+          else res = 2 * _q
+        } else {
+          if (_q === 1 || _q === 3 || _q === 6) {
+            if (_p === _q) res = 5 * _p + 3
+            else res = (2 * _q) + _p
+          } else res = Math.min(_p, _q) + 4
+        }
+        result.textContent = res
+      }
+    </script>
+  </body>
+</html>
