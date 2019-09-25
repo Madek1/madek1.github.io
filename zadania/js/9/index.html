@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Największy wspólny dzielnik</title>
+</head>
+<body>
+    <h1>Największy wspólny dzielnik</h1>
+    <label for="a">
+        Podaj pierwszą liczbę:
+        <input type="number" name="a" id="a">
+    </label>
+    <br>
+    <label for="b">
+        Podaj druga liczbę:
+        <input type="number" name="b" id="b">
+    </label>
+    <br>
+    <input type="submit" value="Oblicz" onclick="calc()">
+    <br>
+    <p id="wynik"></p>
+    <script>
+        const calc = () => {
+            wynik.textContent = `Największy wspólny dzielnik to ${gcd(~~a.value, ~~b.value)}`
+        }
+
+        const gcd = (_a, _b) => {
+            if (_b !== 0) return gcd(_b, _a % _b)
+            return _a
+        }
+    </script>
+</body>
+</html>

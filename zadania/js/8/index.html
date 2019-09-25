@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Silnia</title>
+</head>
+<body>
+    <h1>Silnia</h1>
+    <label for="liczba">
+        Podaj liczbę:
+        <input type="number" name="liczba" id="liczba">
+    </label>
+    <input type="submit" value="Oblicz" onclick="calc()">
+    <br>
+    <p id="wynik"></p>
+    <script>
+        const calc = () => {
+            wynik.textContent = `Silnia: ${silnia(~~liczba.value)}`
+        }
+
+        const silnia = (i) => {
+            if (i > 1) return i * silnia(--i)
+            return 1
+        }
+    </script>
+</body>
+</html>

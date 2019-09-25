@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Potęga</title>
+</head>
+<body>
+    <h1>Potęga</h1>
+    <label for="a">
+        Podstawa:
+        <input type="number" name="a" id="a">
+    </label>
+    <br>
+    <label for="b">
+        Wykładnik:
+        <input type="number" name="b" id="b">
+    </label>
+    <br>
+    <input type="submit" value="Oblicz" onclick="calc()">
+    <br>
+    <p id="wynik"></p>
+    <script>
+        const calc = () => {
+            wynik.textContent = `${~~a.value} do potęgi ${~~b.value} = ${(~~a.value) ** ~~b.value}`
+        }
+    </script>
+</body>
+</html>

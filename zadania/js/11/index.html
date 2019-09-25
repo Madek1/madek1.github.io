@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabliczka mnożenia</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            width: 50px;
+            height: 40px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        th {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table id="tabela"></table>
+    <script>
+        for (let y = 0; y < 11; y++) {
+            const line = document.createElement('tr')
+            line.id = 'linia' + y
+            tabela.appendChild(line)
+            for (let x = 0; x < 11; x++) {
+                const field = x === 0 || y === 0 ? document.createElement('th') : document.createElement('td')
+                if (y === 0) {
+                    field.textContent = x > 0 ? x : null
+                } else {
+                    field.textContent = x > 0 ? x * y : y
+                }
+                document.querySelector(`#linia${y}`).appendChild(field)
+            }
+        }
+    </script>
+</body>
+</html>
