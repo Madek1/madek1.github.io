@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pętle</title>
+</head>
+<body>
+    <h1>Ciąg liczb</h1>
+    <label for="pierwsza">
+        Pierwsza liczba:
+        <input type="number" name="pierwsza" id="pierwsza">
+    </label>
+    <br>
+    <label for="ilosc">
+        Ilosc liczb:
+        <input type="number" name="ilosc" id="ilosc">
+    </label>
+    <br>
+    <label for="roznica">
+        Róznica:
+        <input type="number" name="roznica" id="roznica">
+    </label>
+    <br>
+    <input type="submit" value="Oblicz" onclick="calc()">
+    <p id="wynik"></p>
+    <script>
+        const calc = () => {
+            let message = 'Ciąg:'
+            for (let i = 0; i < ~~ilosc.value; i++) {
+                message += ` ${i * ~~roznica.value + ~~pierwsza.value}`
+            }
+            wynik.textContent = message
+        }
+    </script>
+</body>
+</html>

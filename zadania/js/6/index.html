@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data</title>
+</head>
+<body>
+    <h1>Obliczanie dnia tygodnia</h1>
+    <p>
+        <label for="day">
+            DZIEŃ
+            <input type="number" name="day" id="day">
+        </label>
+        <input type="submit" value="OBLICZ" onclick="calc()">
+    </p>
+    <p>
+        <label for="month">
+            MIESIĄC
+            <input type="number" name="month" id="month">
+        </label>
+    </p>
+    <p>
+        <label for="day">
+            ROK
+            <input type="number" name="year" id="year">
+        </label>
+    </p>
+    <h3 id="result"></h3>
+    <script>
+        const calc = () => {
+            let d = ~~day.value
+            const m = ~~month.value
+            const r = ~~year.value
+            if (m < 3) {
+                m += 12;
+                r--
+            }
+            d = r + Math.floor(r / 4) - Math.floor(r / 100) + Math.floor(r / 400) + 3 * m - Math.floor((2 * m + 1) / 5 ) + d + 1;
+            d -= (Math.floor(d / 7)) * 7;
+            console.log(d)
+            let _day = ''
+            switch(d) {
+                case 0:
+                    _day = 'niedziela'
+                    break;
+                case 1:
+                    _day = 'poniedziałek'
+                    break;
+                case 2:
+                    _day = 'wtorek'
+                    break;
+                case 3:
+                    _day = 'środa'
+                    break;
+                case 4:
+                    _day = 'czwartek'
+                    break;
+                case 5:
+                    _day = 'piątek'
+                    break;
+                case 6:
+                    _day = 'sobota'
+                    break;
+            }
+            console.log(_day)
+            result.textContent = 'Dzień tygodnia dla danej daty to: ' + _day
+        }
+    </script>
+</body>
+</html>

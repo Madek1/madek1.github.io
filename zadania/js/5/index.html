@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wielkanoc</title>
+    <style>
+        body {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <p>Obliczanie daty wielkanocy</p>
+    <label for="year">
+        Podaj rok:
+        <input type="number" id="year" name="year">
+    </label>
+    <input type="submit" value="OBLICZ" onclick="calc()">
+    <p id="result"></p>
+    <script>
+        const calc = () => {
+            const _year = ~~year.value
+            const {x, y} = checkYear(_year)
+            const d = (19 * (_year % 19) + x) % 30
+            const f = ((2 * (_year % 4)) + (4 * (_year % 7)) + (6 * d) + y) % 7
+            let data = ''
+            if (f === 6 && d === 29) {
+                data = '26 kwietnia'
+            } else if (f === 6 && d === 28 && (11 * x + 11) % 30 < 19) {
+                data = '18 kwietnia'
+            } else {
+                data = (d + f < 10) ? `${(22 + d + f)} marca` : `${(d + f - 9)} kwietnia`
+            }
+            result.textContent = `Wielkanoc jest ${data}`
+        }
+
+        const checkYear = (_year) => {
+            let x, y
+            if (_year > 0 && _year < 1583) {
+                x = 15
+                y = 6
+            } else if (_year < 1700) {
+                x = 22
+                y = 2
+            } else if (_year < 1900) {
+                x = 23
+                y = _year < 1800 ? 3 : 4
+            } else if (_year < 2200) {
+                x = 24
+                y = _year < 2100 ? 5 : 6
+            } else {
+                result.textContent = 'Nieprawidłowy rok'
+                throw new Error('Nieprawidłowy rok')
+            }
+            return {x, y}
+        }
+    </script>
+</body>
+</html>
