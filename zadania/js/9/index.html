@@ -27,7 +27,11 @@
         }
 
         const gcd = (_a, _b) => {
-            if (_b !== 0) return gcd(_b, _a % _b)
+            while (_b !== 0) {
+                let c = _a % _b
+                _a = _b
+                _b = c
+            }
             return _a
         }
     </script>

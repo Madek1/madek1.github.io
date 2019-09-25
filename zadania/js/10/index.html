@@ -23,7 +23,9 @@
     <p id="wynik"></p>
     <script>
         const calc = () => {
-            wynik.textContent = `${~~a.value} do potęgi ${~~b.value} = ${(~~a.value) ** ~~b.value}`
+            let x = ~~a.value
+            for (let i = 0; i <  ~~b.value - 1; i++) x = x * ~~a.value
+            wynik.textContent = `${~~a.value} do potęgi ${~~b.value} = ${x}`
         }
     </script>
 </body>
