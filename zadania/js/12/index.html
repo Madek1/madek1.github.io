@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tablice</title>
+    <style>
+      #wynik {
+        max-width: 100vw;
+        height: auto;
+      }
+    </style>
 </head>
 <body>
     <fieldset>
@@ -20,14 +26,14 @@
         </label>
         <br>
         <label for="ilosc">
-           Ilosc elementów: 
+           Ilosc elementów:
            <input type="number" name="ilosc" id="ilosc">
        </label>
        <br>
        <input type="submit" value="Losuj" onclick="losuj()">
        <input type="submit" value="Wyswietl" onclick="wyswietl()">
     </fieldset>
-    
+
     <fieldset>
         <legend>Dodaj do tablicy</legend>
         <label for="liczba">
@@ -38,7 +44,7 @@
         <input type="submit" value="Dodaj na początek" onclick="dodaj(true)">
         <input type="submit" value="Dodaj na koniec" onclick="dodaj(false)">
     </fieldset>
-    
+
     <input type="submit" value="Oblicz srednią" onclick="srednia()"><br>
     <input type="submit" value="Min Max" onclick="min_max()"><br>
     <input type="submit" value="Sortuj" onclick="sortuj()"><br>
@@ -55,52 +61,62 @@
     <p id="wynik"></p>
 
     <script>
-        const arr = []
+      const arr = []
 
-        const losuj = () => {
-            arr.length = 0
-            const min = ~~a.value
-            const max = ~~b.value
-            if (min > max) {
-                const temp = min
-                min = max
-                max = temp
-            }
-            for(let i = 0; i < ~~ilosc.value; i++) {
-                arr.push(Math.floor(Math.random() * (max - min + 1) + min))
-            }
-            console.log(arr)
+      const losuj = () => {
+        arr.length = 0
+        const min = ~~a.value
+        const max = ~~b.value
+        if (min > max) {
+          const temp = min
+          min = max
+          max = temp
         }
+        for(let i = 0; i < ~~ilosc.value; i++) {
+          arr.push(Math.floor(Math.random() * (max - min + 1) + min))
+        }
+      }
 
-        const wyswietl = () => {
-            wynik.textContent = `Wynik: ${[...arr]}`
-        }
+      const wyswietl = () => {
+        wynik.textContent = `Wynik: ${arr.join(', ')}`
+      }
 
-        const dodaj = (on_start) => {
-            on_start ? arr.unshift(~~liczba.value) : arr.push(~~liczba.value)
-        }
+      const dodaj = (on_start) => {
+        on_start ? arr.unshift(~~liczba.value) : arr.push(~~liczba.value)
+      }
 
-        const srednia = () => {
-            wynik.textContent = `Srednia: ${arr.reduce((last, current) => (last + current)) / arr.length}`
-        }
+      const srednia = () => {
+        wynik.textContent = `Srednia: ${arr.reduce((last, current) => (last + current)) / arr.length}`
+      }
 
-        const min_max = () => {
-            wynik.textContent = `Minimum: ${Math.min(...arr)}, maksimum: ${Math.max(...arr)}`
+      const min_max = () => {
+        let min = max = arr[0]
+        for (let item of arr) {
+          if (item < min) min = item
+          if (item > max) max = item
         }
+        wynik.textContent = `Minimum: ${min}, maksimum: ${max}`
+        // wynik.textContent = `Minimum: ${Math.min(...arr)}, maksimum: ${Math.max(...arr)}`
+      }
 
-        const sortuj = () => {
-            arr.sort((a, b) => (a - b))
-            wynik.textContent = 'Posortowano!'
-        }
+      const sortuj = () => {
+        arr.sort((a, b) => (a - b))
+        wynik.textContent = 'Posortowano!'
+      }
 
-        const wyszukaj = () => {
-            const indexes = []
-            arr.reduce((last, current, index) => {
-                if (current === ~~szukana.value) indexes.push(index)
-            })
-            // const index = arr.findIndex(item => item === ~~szukana.value)
-            wynik.textContent = index === -1 ? 'Nie znaleziono liczby' : `Znaleziono liczbę na pozycji ${[...indexes]}`
+      const wyszukaj = () => {
+        const indexes = arr[0] === ~~szukana.value ? [~~szukana.value] : []
+        arr.reduce((last, current, index) => {
+          console.log(index)
+          if (current === ~~szukana.value) indexes.push(index)
+        })
+        wynik.textContent = indexes.length === 0
+        ? 'Nie znaleziono liczby'
+        : `Znaleziono liczbę ${~~szukana.value}`
+        if (indexes.length > 1) {
+          wynik.textContent += `, występuje ona ${indexes.length} razy`
         }
+      }
     </script>
 </body>
 </html>
