@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sila hasla</title>
+    <style>
+        #result {
+            width: 120px;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid black;
+            background-color: darkred;
+            font-size: 22px;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <label for="password">
+        Wpisz hasło<br>
+        <input type="text" name="password" id="password" onkeydown="check()" onkeyup="check()">
+    </label>
+    <p id="result">Bardzo slabe</p>
+    <script>
+        const check = () => {
+            const pass = password.value
+            const len = pass.length
+            let sum = 0
+            if (/[a-z]/.test(pass)) sum++
+            if (/[A-Z]/.test(pass)) sum++ 
+            if (/[0-9]/.test(pass)) sum++ 
+            if (/[!@#\$%\^&\*\(\)\-\+\_\=]/.test(pass)) sum++ 
+            if (len > 7) sum++ 
+
+            if (sum === 5) {
+                result.textContent = 'Bardzo silne'
+                result.style.backgroundColor = 'darkgreen'
+            } else if (sum === 4) {
+                result.textContent = 'Silne'
+                result.style.backgroundColor = 'green'
+            } else if (sum === 3) {
+                result.textContent = 'Srednie'
+                result.style.backgroundColor = 'orange'
+            } else if (sum === 2) {
+                result.textContent = 'Slabe'
+                result.style.backgroundColor = 'red'
+            } else {
+                result.textContent = 'Bardzo slabe'
+                result.style.backgroundColor = 'darkred'
+            }
+        }
+    </script>
+</body>
+</html>

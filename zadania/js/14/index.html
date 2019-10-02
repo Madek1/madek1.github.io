@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dane</title>
+    <style>
+        input[type=text] {
+            position: absolute;
+            left: 130px;
+        }
+
+        input[type=submit] {
+            position: relative;
+            left: 180px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <p>Proszę podać swoje dane:</p>
+    <p><em>(wszystkie pola muszą zostać wypełnione)</em></p>
+    <h1>Dane personalne:</h1>
+    <label for="imie">
+        imie:
+        <input type="text" name="imie" id="imie">
+    </label>
+    <br>
+    <label for="nazwisko">
+        nazwisko:
+        <input type="text" name="nazwisko" id="nazwisko">
+    </label>
+    <br>
+    <label for="telefon">
+        nr telefonu:
+        <input type="text" name="telefon" id="telefon" placeholder="+48(022)000000">
+    </label>
+    <br>
+    <label for="poczta">
+        kod pocztowy:
+        <input type="text" name="poczta" id="poczta" placeholder="00-000">
+    </label>
+    <br>
+    <input type="submit" value="Wyslij!" onclick="send()">
+
+    <script>
+        const send = () => {
+            const name = imie.value
+            const surname = nazwisko.value
+            const phone = telefon.value
+            const zip = poczta.value
+            test(name, surname, phone, zip)
+        }
+
+        const test = (name, surname, phone, zip) => {
+            const re_name = re_surname = /[A-ZĄĘŻŹĆŁ]{1}[a-ząężźćńół]{2,}/
+
+            // test name
+            re_name.test(name)
+            // test surname
+            re_surname.test(surname)
+            
+            // test zip code
+            const re_zip = /\d{2}-\d{3}$/
+            re_zip.test(zip)
+
+            // test phone number
+            const re_phone =/\+\d{2}\(\d{3}\)\d{6}$/
+            alert(re_phone.test(phone))
+        }
+    </script>
+</body>
+</html>

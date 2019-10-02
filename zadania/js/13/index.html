@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dzisiejsza data</title>
+</head>
+<body>
+    <h1 id="date"></h1>
+    <h2 id="godzin"></h2>
+    <script>
+        const data = () => {
+            const data = new Date()
+            const miesiace = ['styczen', 'luty', 'marzec', 'kwiecien', 'maj', 'czerwiec', 'lipiec', 'sierpien', 'wrzesien', 'pazdziernik', 'listopad', 'grudzien']
+            const dni = ['niedziela', 'poniedzialek', 'wtorek', 'sroda', 'czwartek', 'piatek', 'sobota']
+            date.textContent = `Dzis jest ${addZero(data.getDate())} ${miesiace[data.getMonth()]} ${data.getFullYear()} ${dni[data.getDay()]}`
+        }
+
+        const godzina = () => {
+            const x = new Date()
+            godzin.textContent = `Godzina: ${addZero(x.getHours())}:${addZero(x.getMinutes())}:${addZero(x.getSeconds())}`
+        }
+
+        const addZero = (num) => {
+            num = '0' + num
+            return num.slice(-2)
+        }
+        
+        data()
+        godzina()
+
+        setInterval(() => {
+            data()
+            godzina()
+        }, 1000)
+    </script>
+</body>
+</html>
